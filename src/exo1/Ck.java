@@ -47,7 +47,7 @@ public abstract class Ck extends Frame {
 		int rootX = frameWidth/2; // recherche du centre
 		int rootY = frameHeight/2;   //
 		g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
-		
+
 		drawCk(w/4, h/2, (3*w)/4, h/2,profondeur, g); 
 	}
 

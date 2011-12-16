@@ -39,7 +39,7 @@ public class CkSol extends Ck {
 			// Coordonnées du nouveau sommet
 			int xsommet = (int)(xmilieu + h*coeffNormatif * xdirecteur);
 			int ysommet = (int)(ymilieu + h*coeffNormatif * ydirecteur);
-			
+
 			// On ne trace les traits que pour la dernière étape, 
 			// afin d'éviter d'avoir les traits de construction affichés !
 			if(k==1) {

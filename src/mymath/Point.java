@@ -33,7 +33,7 @@ public class Point {
 		xPos += x;
 		yPos += y;
 	}
-	
+
 	public String toString() {
 		return "X: "+xPos+"\tY: "+yPos;
 	}

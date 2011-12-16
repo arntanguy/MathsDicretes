@@ -1,4 +1,4 @@
-package exo1;
+package graphique;
 
 
 import java.awt.*;                    // Pour  Graphics, Frame

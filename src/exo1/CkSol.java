@@ -1,7 +1,5 @@
 package exo1;
 
-import graphique.Ck;
-
 import java.awt.Color;
 import java.awt.Graphics;
 

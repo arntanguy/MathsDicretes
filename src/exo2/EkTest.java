@@ -1,4 +1,4 @@
-package exo1;
+package exo2;
 
 import java.util.Scanner;			     
 
@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author 
  * @version 1.0
  */
-public class TestCk {
+public class EkTest {
 
 
 	/**
@@ -20,7 +20,7 @@ public class TestCk {
 		Scanner sc = new Scanner(System.in);
 		int profondeur = sc.nextInt();
 
-		CkSol t = new CkSol(profondeur); 
+		EkSol t = new EkSol(profondeur); 
 	}
 
 }

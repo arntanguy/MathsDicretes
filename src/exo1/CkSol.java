@@ -37,9 +37,10 @@ public class CkSol extends Ck {
     	double ymilieu = (y1+y2)/2;
     	int xsommet = (int)(xmilieu + h*coeffNormatif * xdirecteur);
     	int ysommet = (int)(ymilieu + h*coeffNormatif * ydirecteur);
-    	
+    	if(k==1) {
         drawingArea.drawLine(x1, y1, xsommet, ysommet);
     	drawingArea.drawLine(xsommet, ysommet, x2, y2);
+    	}
     	drawCk(xsommet, ysommet, x2, y2, k-1, drawingArea);
     	drawCk(x1, y1, xsommet, ysommet, k-1, drawingArea);
 

@@ -47,7 +47,7 @@ public abstract class Ek extends Frame {
 		int rootY = frameHeight/2;   //
 		g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
 
-		drawEk(w/2, h/2, Math.PI/2, w/6, profondeur, g); 
+		drawEk(w/2, h/2, Math.PI, w/5, profondeur, g); 
 	}
 
 	public abstract void drawEk(int xorigine, int yorigine, double angleInitial, int taille, int k, Graphics drawingArea);

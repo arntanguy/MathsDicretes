@@ -4,10 +4,17 @@ import java.awt.Graphics;
 import mymath.Point;
 
 public class EkSol extends Ek {
-	private static double ANGLE = 72*Math.PI/180;
-
+	private int nbSegments;
+	private double ANGLE;
+	
 	public EkSol(int profondeur) {
+		this(profondeur, 5);
+	}
+	
+	public EkSol(int profondeur, int nbSegments) {
 		super(profondeur);
+		this.nbSegments = nbSegments;
+		ANGLE = 2*Math.PI/nbSegments;
 	}
 
 	private Point rotate(Point p, double angle) {
@@ -20,51 +27,21 @@ public class EkSol extends Ek {
 				x*Math.sin(angle)+y*Math.cos(angle));
 	}
 
-	public void drawEk(int xorigine, int yorigine, double angleInitial, int taille, int k, Graphics drawingArea) {
-		if(k>0) {
-			//System.out.println("Angle initial "+angleInitial);
-
+	public void drawEk(int xorigine, int yorigine, double angle, int taille, int n, Graphics drawingArea) {
+		if(n>0) {
 			// Vecteur directeur de la droite courante
-			Point vD = rotate(1, 0, angleInitial);
+			Point vD = rotate(1, 0, angle);
 
 			//System.out.println("Vecteur directeur :"+vD);
 
-			// Premier point de l'étoile
-			double x1 = xorigine + taille*vD.getX();
-			double y1 = yorigine + taille*vD.getY();
-			Point p1 = new Point(x1,y1);
-			//System.out.println("Position 1 "+p1.toString());
-
-			drawEk((int)x1, (int)y1, ANGLE, taille/3, k-1, drawingArea);
-
-			vD = rotate(vD, ANGLE);
-			Point p2 = new Point(xorigine+taille*vD.getX(), yorigine+taille*vD.getY());
-			//System.out.println("Position 2 "+p2.toString());
-			drawEk((int)p2.getX(), (int)p2.getY(), ANGLE, taille/3, k-1, drawingArea);
-			
-			vD = rotate(vD, ANGLE);
-			Point p3 = new Point(xorigine+taille*vD.getX(), yorigine+taille*vD.getY());
-			//System.out.println("Position 3 "+p3.toString());
-			drawEk((int)p3.getX(), (int)p3.getY(), ANGLE, taille/3, k-1, drawingArea);
-			
-			vD = rotate(vD, ANGLE);
-			Point p4 = new Point(xorigine+taille*vD.getX(), yorigine+taille*vD.getY());
-			//System.out.println("Position 3 "+p3.toString());
-			drawEk((int)p4.getX(), (int)p4.getY(), ANGLE, taille/3, k-1, drawingArea);
-			
-			vD = rotate(vD, ANGLE);
-			Point p5 = new Point(xorigine+taille*vD.getX(), yorigine+taille*vD.getY());
-			//System.out.println("Position 3 "+p3.toString());
-			drawEk((int)p5.getX(), (int)p5.getY(), ANGLE, taille/3, k-1, drawingArea);
-			
-
-			drawingArea.drawLine((int)xorigine, (int)yorigine, (int)p1.getX(), (int)p1.getY());
-			drawingArea.drawLine((int)xorigine, (int)yorigine, (int)p2.getX(), (int)p2.getY());
-			drawingArea.drawLine((int)xorigine, (int)yorigine, (int)p3.getX(), (int)p3.getY());
-			drawingArea.drawLine((int)xorigine, (int)yorigine, (int)p4.getX(), (int)p4.getY());
-			drawingArea.drawLine((int)xorigine, (int)yorigine, (int)p5.getX(), (int)p5.getY());
-
-
+			Point p = null;
+			for	(int i=0; i<nbSegments; i++) {
+				vD = rotate(vD, ANGLE);
+				p = new Point(xorigine+taille*vD.getX(), yorigine+taille*vD.getY());
+				//System.out.println("Position 2 "+p2.toString());
+				drawEk((int)p.getX(), (int)p.getY(), ANGLE, taille/3, n-1, drawingArea);
+				drawingArea.drawLine((int)xorigine, (int)yorigine, (int)p.getX(), (int)p.getY());
+			}
 		}		
 	}
 }

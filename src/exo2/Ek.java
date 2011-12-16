@@ -17,7 +17,6 @@ public abstract class Ek extends Frame {
 	protected int profondeur;
 
 
-
 	/**
 	 * Creation de Ck.
 	 *
@@ -39,6 +38,7 @@ public abstract class Ek extends Frame {
 
 	public void paint(Graphics g)
 	{
+		System.out.println("Call");
 		int frameHeight = getSize().height; // taille du frame, cette fois avec lesbvordures
 		int frameWidth = getSize().width;   
 		int h = frameHeight-50 ;  //   pour que Ck tienne dans 
@@ -46,11 +46,11 @@ public abstract class Ek extends Frame {
 		int rootX = frameWidth/2; // recherche du centre
 		int rootY = frameHeight/2;   //
 		g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
-
-		drawEk(w/2, h/2, Math.PI, w/5, profondeur, g); 
+		
+		drawEk(w/2, h/2, 0, w/4, profondeur, g); 
 	}
 
-	public abstract void drawEk(int xorigine, int yorigine, double angleInitial, int taille, int k, Graphics drawingArea);
+	public abstract void drawEk(int xorigine, int yorigine, double angle, int taille, int k, Graphics drawingArea);
 
 }
 

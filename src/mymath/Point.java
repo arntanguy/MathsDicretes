@@ -1,7 +1,5 @@
 package mymath;
 
-import java.lang.Math;
-
 public class Point {
 	private double xPos;
 	private double yPos;

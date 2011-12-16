@@ -20,7 +20,7 @@ public class EkTest {
 		Scanner sc = new Scanner(System.in);
 		int profondeur = sc.nextInt();
 
-		EkSol t = new EkSol(profondeur); 
+		EkSol t = new EkSol(profondeur, 7); 
 	}
 
 }

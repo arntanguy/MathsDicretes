@@ -39,6 +39,7 @@ public abstract class Ck extends Frame {
 
 	public void paint(Graphics g)
 	{
+		System.out.println("Call");
 		int frameHeight = getSize().height; // taille du frame, cette fois avec lesbvordures
 		int frameWidth = getSize().width;   
 		int h = frameHeight-50 ;  //   pour que Ck tienne dans 
@@ -46,7 +47,7 @@ public abstract class Ck extends Frame {
 		int rootX = frameWidth/2; // recherche du centre
 		int rootY = frameHeight/2;   //
 		g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
-
+		
 		drawCk(w/4, h/2, (3*w)/4, h/2,profondeur, g); 
 	}
 

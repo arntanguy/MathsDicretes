@@ -1,4 +1,4 @@
-package exo2;
+package exo3;
 
 import java.awt.Graphics;
 import mymath.Point;
@@ -20,11 +20,6 @@ public class EkSol extends Ek {
 	private Point rotate(Point p, double angle) {
 		return new Point(p.getX()*Math.cos(angle)-p.getY()*Math.sin(angle),
 				p.getX()*Math.sin(angle)+p.getY()*Math.cos(angle));
-	}
-
-	private Point rotate(double x, double y, double angle) {
-		return new Point(x*Math.cos(angle)-y*Math.sin(angle),
-				x*Math.sin(angle)+y*Math.cos(angle));
 	}
 
 	public void drawEk(int xorigine, int yorigine, double angle, int taille, int n, Graphics drawingArea) {

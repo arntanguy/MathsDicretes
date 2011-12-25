@@ -48,26 +48,22 @@ public abstract class Hk extends Frame {
 		int rootY = frameHeight/2;   //
 		g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
 
-		drawHk(w/4, h/2, (3*w)/4, h/2,profondeur, g); 
+		drawHk(w/2, h/2, w/2, profondeur, g);
 	}
 
 
 
 
 	/** drawCk 
-	 *  Produit un dessin recursif de Ck
+	 *  Produit un dessin recursif de Hk
 	 * Parametres: 
-	 *    int   x1 :la coordonnee en x de la premiere extremité
-	 *    int  y1 : la coordonnee en y de la premiere extremité
-	 *    int   x2 :la coordonnee en x de la deuxième extremité
-	 *    int  y2 : la coordonnee en y de la deuxième extremité
+	 *    int   xc:la coordonnee en x du centre du carré
+	 *    int  yc : la coordonnee en y du centre du carré
 	 *    Graphics drawingArea : L'objet graphique dans lequel Ck est dessiné
-	 *        drawn 
-	 * Preconditions : x1,x2 sont compris entre 0 et w; y1 et y2 entre 0 et h;
-	 * Postcondition : Ck est dessiné
+	 * Postcondition : Hk est dessiné
 	 **/ 
-	public abstract  void drawHk(int x1, int y1, int x2, int y2, int k , 
-			Graphics drawingArea) ;
+	public abstract void drawHk(int xc, int yc, int cote, int k,	Graphics drawingArea);
+
 }
 
 

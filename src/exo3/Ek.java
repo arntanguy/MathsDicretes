@@ -45,7 +45,7 @@ public abstract class Ek extends Frame {
 		int w = frameWidth -50;  //     le frame
 		int rootX = frameWidth/2; // recherche du centre
 		int rootY = frameHeight/2;   //
-		g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
+		//g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
 
 		drawEk(w/2, h/2, 0, w/4, profondeur, g); 
 	}

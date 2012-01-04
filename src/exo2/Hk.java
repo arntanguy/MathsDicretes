@@ -48,7 +48,7 @@ public abstract class Hk extends Frame {
 		int rootY = frameHeight/2;   //
 		g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
 
-		drawHk(w/2, h/2, w/2, profondeur, g);
+		drawHk(w/2, h/2-50, w/2, 1, 4, profondeur, g);
 	}
 
 
@@ -62,7 +62,7 @@ public abstract class Hk extends Frame {
 	 *    Graphics drawingArea : L'objet graphique dans lequel Ck est dessiné
 	 * Postcondition : Hk est dessiné
 	 **/ 
-	public abstract void drawHk(int xc, int yc, int cote, int k,	Graphics drawingArea);
+	public abstract void drawHk(int xc, int yc, int cote, int entree, int sortie, int k, Graphics drawingArea);
 
 }
 

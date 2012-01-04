@@ -2,5 +2,5 @@ package exo2;
 
 public enum Orientation {
 	//Gauche, droite, haut, bas
-	G,D,H,B;
+	G,D,H,B, NONE;
 }

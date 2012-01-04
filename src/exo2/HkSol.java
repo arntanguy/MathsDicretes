@@ -9,7 +9,17 @@ public class HkSol extends Hk {
 		super(profondeur);
 	}
 
-	public void drawHk(int xc, int yc, int cote, Orientation orientation, int k, Graphics drawingArea) {
+	/**
+	 * 
+	 * @param xc
+	 * @param yc
+	 * @param cote
+	 * @param orientation
+	 * @param p : orientation du carré parent
+	 * @param k
+	 * @param drawingArea
+	 */
+	public void drawHk(int xc, int yc, int cote, Orientation orientation, Orientation p, int numCarre, int k, Graphics drawingArea) {
 		if(k>0) {
 			// Calcul de la position du centre des sous carrés
 			int demiCote = cote/2;
@@ -29,48 +39,107 @@ public class HkSol extends Hk {
 					drawingArea.drawLine(xc1,yc1, xc2,yc2);
 					drawingArea.drawLine(xc2,yc2, xc3,yc3);
 					drawingArea.drawLine(xc3,yc3, xc4,yc4);
+					switch (numCarre) {
+					case 1:
+					case 2:
+						drawingArea.drawLine(xc4,yc4, xc4+demiCote,yc4);
+						drawingArea.drawLine(xc1, yc1, xc1, yc1+demiCote);
+						break;
+					case 3:
+						drawingArea.drawLine(xc1, yc1, xc1-demiCote, yc1);
+						drawingArea.drawLine(xc4, yc4, xc4, yc4+demiCote);
+						break;
+					case 4:
+						drawingArea.drawLine(xc4, yc4, xc4-demiCote, yc4);
+						break;
+
+					}
 					break;
 				case B:
 					drawingArea.drawLine(xc1, yc1, xc2, yc2);
 					drawingArea.drawLine(xc1, yc1, xc4, yc4);
 					drawingArea.drawLine(xc4, yc4, xc3, yc3);
+					switch (numCarre) {
+					case 1:
+						drawingArea.drawLine(xc2,yc2, xc2,yc2+demiCote);
+						drawingArea.drawLine(xc3, yc3, xc3, yc3+demiCote);
+						break;
+					case 2:
+						drawingArea.drawLine(xc3, yc3, xc3+demiCote, yc3);
+						break;
+					case 3:
+						drawingArea.drawLine(xc2, yc2, xc2-demiCote, yc2);
+						break;
+					case 4:
+						drawingArea.drawLine(xc3, yc3, xc3, yc3+demiCote);
+						break;
+
+					}
 					break;
 				case G:
 					drawingArea.drawLine(xc1,yc1, xc2,yc2);
 					drawingArea.drawLine(xc2,yc2, xc3,yc3);
 					drawingArea.drawLine(xc1,yc1, xc4,yc4);
+					switch (numCarre) {
+					case 1:
+						drawingArea.drawLine(xc4, yc4, xc4+demiCote, yc4);
+						drawingArea.drawLine(xc3, yc3, xc3, yc3+demiCote);
+						break;
+					case 2:
+						drawingArea.drawLine(xc3, yc3, xc3+demiCote, yc3);
+						drawingArea.drawLine(xc4, yc4, xc4, yc4-demiCote);
+						break;
+					
+					case 4:
+						drawingArea.drawLine(xc3, yc3, xc3, yc3-demiCote);
+						break;
+
+					}
 					break;
 				case D:
 					drawingArea.drawLine(xc4,yc4, xc3,yc3);
 					drawingArea.drawLine(xc2,yc2, xc3,yc3);
 					drawingArea.drawLine(xc1,yc1, xc4,yc4);
+					switch (numCarre) {
+					case 1:
+						drawingArea.drawLine(xc2, yc2, xc2, yc2-demiCote);
+						break;
+					case 3:
+						drawingArea.drawLine(xc2, yc2, xc2-demiCote, yc2);
+						drawingArea.drawLine(xc1, yc1, xc1, yc1-demiCote);
+						break;
+					case 4:
+						drawingArea.drawLine(xc2, yc2, xc2, yc2+demiCote);
+						break;
+
+					}
 					break;
 				}
 			}
 			switch (orientation) {
 			case H:
-				drawHk(xc1, yc1, demiCote, Orientation.D, k-1, drawingArea);
-				drawHk(xc2, yc2, demiCote, Orientation.H, k-1, drawingArea);
-				drawHk(xc3, yc3, demiCote, Orientation.H, k-1, drawingArea);
-				drawHk(xc4, yc4, demiCote, Orientation.G, k-1, drawingArea);
+				drawHk(xc1, yc1, demiCote, Orientation.D, Orientation.H, 1, k-1, drawingArea);
+				drawHk(xc2, yc2, demiCote, Orientation.H, Orientation.H, 2, k-1, drawingArea);
+				drawHk(xc3, yc3, demiCote, Orientation.H, Orientation.H, 3, k-1, drawingArea);
+				drawHk(xc4, yc4, demiCote, Orientation.G, Orientation.H, 4, k-1, drawingArea);
 				break;
 			case D:
-				drawHk(xc1, yc1, demiCote, Orientation.H, k-1, drawingArea);
-				drawHk(xc2, yc2, demiCote, Orientation.B, k-1, drawingArea);
-				drawHk(xc3, yc3, demiCote, Orientation.D, k-1, drawingArea);
-				drawHk(xc4, yc4, demiCote, Orientation.D, k-1, drawingArea);
+				drawHk(xc1, yc1, demiCote, Orientation.H, Orientation.D, 1, k-1, drawingArea);
+				drawHk(xc2, yc2, demiCote, Orientation.B, Orientation.D, 2, k-1, drawingArea);
+				drawHk(xc3, yc3, demiCote, Orientation.D, Orientation.D, 3, k-1, drawingArea);
+				drawHk(xc4, yc4, demiCote, Orientation.D, Orientation.D, 4, k-1, drawingArea);
 				break;
 			case G:
-				drawHk(xc1, yc1, demiCote, Orientation.G, k-1, drawingArea);
-				drawHk(xc2, yc2, demiCote, Orientation.G, k-1, drawingArea);
-				drawHk(xc3, yc3, demiCote, Orientation.B, k-1, drawingArea);
-				drawHk(xc4, yc4, demiCote, Orientation.H, k-1, drawingArea);
+				drawHk(xc1, yc1, demiCote, Orientation.G, Orientation.G, 1, k-1, drawingArea);
+				drawHk(xc2, yc2, demiCote, Orientation.G, Orientation.G, 2, k-1, drawingArea);
+				drawHk(xc3, yc3, demiCote, Orientation.B, Orientation.G, 3, k-1, drawingArea);
+				drawHk(xc4, yc4, demiCote, Orientation.H, Orientation.G, 4, k-1, drawingArea);
 				break;
 			case B:
-				drawHk(xc1, yc1, demiCote, Orientation.B, k-1, drawingArea);
-				drawHk(xc2, yc2, demiCote, Orientation.D, k-1, drawingArea);
-				drawHk(xc3, yc3, demiCote, Orientation.G, k-1, drawingArea);
-				drawHk(xc4, yc4, demiCote, Orientation.B, k-1, drawingArea);
+				drawHk(xc1, yc1, demiCote, Orientation.B, Orientation.B, 1, k-1, drawingArea);
+				drawHk(xc2, yc2, demiCote, Orientation.D, Orientation.B, 2, k-1, drawingArea);
+				drawHk(xc3, yc3, demiCote, Orientation.G, Orientation.B, 3, k-1, drawingArea);
+				drawHk(xc4, yc4, demiCote, Orientation.B, Orientation.B, 4, k-1, drawingArea);
 				break;
 
 			}

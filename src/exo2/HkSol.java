@@ -30,7 +30,7 @@ public class HkSol extends Hk {
 			int yc3 = yc - demiCote;
 			int xc4 = xc + demiCote;
 			int yc4 = yc + demiCote;
-
+	
 			if(k==1) {
 				switch(orientation) {
 				case H:
@@ -45,6 +45,7 @@ public class HkSol extends Hk {
 					case 2:
 						drawingArea.drawLine(xc4,yc4, xc4+demiCote,yc4);
 						drawingArea.drawLine(xc1, yc1, xc1, yc1+demiCote);
+						
 						break;
 					case 3:
 						drawingArea.drawLine(xc1, yc1, xc1-demiCote, yc1);
@@ -62,7 +63,7 @@ public class HkSol extends Hk {
 					drawingArea.drawLine(xc4, yc4, xc3, yc3);
 					switch (numCarre) {
 					case 1:
-						drawingArea.drawLine(xc2,yc2, xc2,yc2-demiCote);
+						drawingArea.drawLine(xc2, yc2, xc2,yc2-demiCote);
 						drawingArea.drawLine(xc3, yc3, xc3, yc3+demiCote);	
 						drawingArea.drawLine(xc3, yc3, xc3+demiCote, yc3);
 						break;
@@ -111,7 +112,7 @@ public class HkSol extends Hk {
 						drawingArea.drawLine(xc2, yc2, xc2, yc2-demiCote);
 						break;
 					case 2:	
-						drawingArea.drawLine(xc1, yc1, xc1, yc1+demiCote);
+						drawingArea.drawLine(xc2, yc2, xc2, yc2+demiCote);
 						break;
 					case 3:
 						drawingArea.drawLine(xc2, yc2, xc2-demiCote, yc2);

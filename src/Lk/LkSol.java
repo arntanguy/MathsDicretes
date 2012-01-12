@@ -2,196 +2,131 @@ package Lk;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import javax.swing.text.AbstractDocument.BranchElement;
+import shared.Path;
 
 
 public class LkSol extends Lk{
 	
 	/**
 	 * Constructeur normal
-	 * @param prof
+	 * @param profondeur
 	 */
-	public LkSol(int prof) {
-		super(prof);
+	public LkSol(int profondeur) {
+		super(profondeur);
 	}
 
 	@Override
-	public void drawHk(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, chem entree, chem sortie, int k , 
+	public void drawHk(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, Path entree, Path sortie, int k , 
 			Graphics drawingArea) {
 			
-		/*
-		 * Calculer les coordonnée du point milieu du carré
-		 */
+		// Coordonnées du milieu du carré
 		int mx = (x1+x3)/2;
 		int my = (y1+y3)/2;
-		
-		/*
-		 * Calcul du point milieu du coté gauche
-		 */
+		// Coordonnées du point milieu du côté gauche
 		int mgx = (x1+x4)/2;
 		int mgy = (y1+y4)/2;
-		
-		/*
-		 * Calcul du point milieu du coté haut
-		 */
-		int mhx = (x1+x2)/2;
-		int mhy = (y1+y2)/2;
-		
-		/*
-		 * Calcul du point milieu du coté droit
-		 */
+		// Coordonnées du point milieu du côté 
 		int mdx = (x2+x3)/2;
 		int mdy = (y2+y3)/2;
-		
-		/*
-		 * Calcul du point milieu du coté droit
-		 */
+		// Coordonnées du point milieu du haut
+		int mhx = (x1+x2)/2;
+		int mhy = (y1+y2)/2;
+		// Coordonnées du point milieu du bas
 		int mbx = (x3+x4)/2;
 		int mby = (y3+y4)/2;
-		
-		
-		/*
-		 * Mettre en place le condition d'arret
-		 * Lorsque le compteur arrive à 0
-		 * Alors on effectue tous les affichages necessaires
-		 * 
-		 */
+
 		if(k == 0){
-			
-			/**
-			 * Definir la couleur des carrés
-			 */
-			drawingArea.setColor(Color.white);
-			
-			drawingArea.drawLine(x1, y1, x2, y2);
-			drawingArea.drawLine(x2, y2, x3, y3);
-			drawingArea.drawLine(x3, y3, x4, y4);
-			drawingArea.drawLine(x4, y4, x1, y1);
-			
-			/**
-			 * Definir la couleur des traits
-			 */
 			drawingArea.setColor(Color.red);
 			
-			/*
-			 * Celon le type d'entrée
-			 */
 			switch (entree) {
-				case bas:
+				case DOWN:
 					switch (sortie) {
-						case haut:
-							
+						case TOP:
 							drawingArea.drawLine(x1, y1, x4, y4);
-							
 							break;
-						case droite:
-							
+
+						case RIGHT:
 							drawingArea.drawLine(x1, y1, x4, y4);
 							drawingArea.drawLine(x1, y1, x2, y2);
-						
-						break;
-						case gauche:
+                            break;
 
+						case LEFT:
 							drawingArea.drawLine(x1, y1, x2, y2);
 							drawingArea.drawLine(x2, y2, x3, y3);
-							
 							break;
 					}
 					break;
-				case haut:
+				case TOP:
 					switch (sortie) {
-						case bas:
-							
+						case DOWN:
 							drawingArea.drawLine(x2, y2, x3, y3);
-
 							break;
-						case milieu:
-							
+						case MIDDLE:
 							drawingArea.drawLine(x1, y1, x4, y4);
 							drawingArea.drawLine(x2, y2, x3, y3);
-						
 							break;
-						case droite:
-							
+						case RIGHT:
 							drawingArea.drawLine(x1, y1, x4, y4);
 							drawingArea.drawLine(x4, y4, x3, y3);
-						
-						break;
-						case gauche:
-							
+                            break;
+						case LEFT:
 							drawingArea.drawLine(x2, y2, x3, y3);
 							drawingArea.drawLine(x3, y3, x4, y4);
-						
 							break;
 					}
 					break;
-				case milieu:
+				case MIDDLE:
 					switch (sortie) {
-						case haut:
-							
+						case TOP:
 							drawingArea.drawLine(x1, y1, x4, y4);
 							drawingArea.drawLine(x2, y2, x3, y3);
-						
 							break;
-						case droite:
-							
+
+						case RIGHT:
 							drawingArea.drawLine(x4, y4, x3, y3);
 							drawingArea.drawLine(x1, y1, x2, y2);
-						
-						break;
-						case milieu:
+                            break;
+
+						case MIDDLE:
 							drawingArea.drawLine(x4, y4, x3, y3);
 							drawingArea.drawLine(x1, y1, x2, y2);
-						
-						break;
+                            break;
 					}
 					break;
-				case droite:
-					switch (sortie) {
-						case bas:
-							
-							drawingArea.drawLine(x1, y1, x2, y2);
-							drawingArea.drawLine(x1, y1, x4, y4);
-						
-							break;
-						case haut:
-							
-							drawingArea.drawLine(x3, y3, x4, y4);
-							drawingArea.drawLine(x1, y1, x4, y4);
-						
-							break;
-						case gauche:
-							
-							drawingArea.drawLine(x1, y1, x2, y2);
-						
-							break;
-					}
+				case RIGHT:
+                    switch (sortie) {
+                        case DOWN:
+                            drawingArea.drawLine(x1, y1, x2, y2);
+                            drawingArea.drawLine(x1, y1, x4, y4);
+                            break;
+
+                        case TOP:
+                            drawingArea.drawLine(x3, y3, x4, y4);
+                            drawingArea.drawLine(x1, y1, x4, y4);
+                            break;
+
+                        case LEFT:
+                            drawingArea.drawLine(x1, y1, x2, y2);
+                            break;
+                    }
 				break;
-				case gauche:
+				case LEFT:
 					switch (sortie) {
-						case bas:
-							
+						case DOWN:
 							drawingArea.drawLine(x2, y2, x3, y3);
 							drawingArea.drawLine(x1, y1, x2, y2);
-						
 							break;
-						case haut:
-							
+						case TOP:
 							drawingArea.drawLine(x4, y4, x3, y3);
 							drawingArea.drawLine(x3, y3, x2, y2);
-						
 							break;
-						case milieu:
-							
+						case MIDDLE:
 							drawingArea.drawLine(x4, y4, x3, y3);
 							drawingArea.drawLine(x1, y1, x2, y2);
-						
 							break;
-						case droite:
-							
+						case RIGHT:
 							drawingArea.drawLine(x4, y4, x3, y3);
-						
-						break;
+                            break;
 					}
 					break;
 			}
@@ -199,267 +134,258 @@ public class LkSol extends Lk{
 			return;
 		}
 		
-		/*
-		 * Decrementer le compteur pour la prochaine iteration
-		 */
-		k--;
-			
-		
-		/*
-		 * Celon le type d'entrée
-		 */
 		switch (entree) {
-			case bas:
+			case DOWN:
 				switch (sortie) {
-					case haut:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.droite,chem.haut, k, drawingArea);
+					case TOP:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.RIGHT,Path.TOP, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.bas,chem.gauche, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.DOWN,Path.LEFT, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.gauche,chem.haut, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.LEFT,Path.TOP, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.bas,chem.droite, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.DOWN,Path.RIGHT, k-1, drawingArea);
 						
 						break;
-					case droite:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.droite, k, drawingArea);
+					case RIGHT:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.RIGHT, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.gauche,chem.bas, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.LEFT,Path.DOWN, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.droite, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.RIGHT, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.bas,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.DOWN,Path.TOP, k-1, drawingArea);
 					break;
-					case gauche:
+					case LEFT:
 
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.droite,chem.gauche, k, drawingArea);
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.RIGHT,Path.LEFT, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.bas,chem.gauche, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.DOWN,Path.LEFT, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.gauche,chem.haut, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.LEFT,Path.TOP, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.bas,chem.droite, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.DOWN,Path.RIGHT, k-1, drawingArea);
 						break;
 				}
 				break;
-			case haut:
+			case TOP:
 				switch (sortie) {
-					case bas:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.droite,chem.bas, k, drawingArea);
+					case DOWN:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.RIGHT,Path.DOWN, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.haut,chem.gauche, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.TOP,Path.LEFT, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.gauche,chem.bas, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.LEFT,Path.DOWN, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.haut,chem.droite, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.TOP,Path.RIGHT, k-1, drawingArea);
 						break;
-					case milieu:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.droite,chem.bas, k, drawingArea);
+					case MIDDLE:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.RIGHT,Path.DOWN, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.haut,chem.gauche, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.TOP,Path.LEFT, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.gauche,chem.milieu, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.LEFT,Path.MIDDLE, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.haut,chem.droite, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.TOP,Path.RIGHT, k-1, drawingArea);
 						break;
 						
-					case droite:
+					case RIGHT:
 
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.droite,chem.bas, k, drawingArea);
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.RIGHT,Path.DOWN, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.haut,chem.gauche, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.TOP,Path.LEFT, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.gauche,chem.droite, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.LEFT,Path.RIGHT, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.haut,chem.droite, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.TOP,Path.RIGHT, k-1, drawingArea);
 					break;
-					case gauche:
+					case LEFT:
 
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.gauche, k, drawingArea);
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.LEFT, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.haut,chem.bas, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.TOP,Path.DOWN, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.gauche, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.LEFT, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.droite,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.RIGHT,Path.TOP, k-1, drawingArea);
 						break;
 				}
 				break;
-			case milieu:
+			case MIDDLE:
 				switch (sortie) {
-					case haut:
+					case TOP:
 						
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.droite,chem.haut, k, drawingArea);
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.RIGHT,Path.TOP, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.bas,chem.gauche, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.DOWN,Path.LEFT, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.gauche,chem.haut, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.LEFT,Path.TOP, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.milieu,chem.droite, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.MIDDLE,Path.RIGHT, k-1, drawingArea);
 						break;
-					case droite:
+					case RIGHT:
 						
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.droite, k, drawingArea);
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.RIGHT, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.gauche,chem.bas, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.LEFT,Path.DOWN, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.droite, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.RIGHT, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.milieu,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.MIDDLE,Path.TOP, k-1, drawingArea);
 					break;
-					case milieu:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.droite, k, drawingArea);
+					case MIDDLE:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.RIGHT, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.gauche,chem.bas, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.LEFT,Path.DOWN, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.milieu, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.MIDDLE, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.milieu,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.MIDDLE,Path.TOP, k-1, drawingArea);
 					break;
 				}
 				break;
-			case droite:
+			case RIGHT:
 				switch (sortie) {
-					case bas:				
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.droite,chem.bas, k, drawingArea);
+					case DOWN:				
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.RIGHT,Path.DOWN, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.droite,chem.gauche, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.RIGHT,Path.LEFT, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.gauche,chem.bas, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.LEFT,Path.DOWN, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.haut,chem.droite, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.TOP,Path.RIGHT, k-1, drawingArea);
 						break;
-					case haut:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.haut, k, drawingArea);
+					case TOP:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.TOP, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.droite,chem.bas, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.RIGHT,Path.DOWN, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.gauche, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.LEFT, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.droite,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.RIGHT,Path.TOP, k-1, drawingArea);
 						break;
-					case gauche:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.gauche, k, drawingArea);
+					case LEFT:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.LEFT, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.droite,chem.bas, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.RIGHT,Path.DOWN, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.gauche, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.LEFT, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.droite,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.RIGHT,Path.TOP, k-1, drawingArea);
 						break;
 				}
 			break;
-			case gauche:
+			case LEFT:
 				switch (sortie) {
-					case bas:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.droite, k, drawingArea);
+					case DOWN:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.RIGHT, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.gauche,chem.bas, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.LEFT,Path.DOWN, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.bas, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.DOWN, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.gauche,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.LEFT,Path.TOP, k-1, drawingArea);
 						break;
-					case haut:
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.droite,chem.haut, k, drawingArea);
+					case TOP:
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.RIGHT,Path.TOP, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.bas,chem.gauche, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.DOWN,Path.LEFT, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.gauche,chem.haut, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.LEFT,Path.TOP, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.gauche,chem.droite, k, drawingArea);
-						
-						
-						break;
-					case milieu:	
-						
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.droite, k, drawingArea);
-						
-						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.gauche,chem.bas, k, drawingArea);
-						
-						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.milieu, k, drawingArea);
-						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.gauche,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.LEFT,Path.RIGHT, k-1, drawingArea);
 						
 						
 						break;
-					case droite:
+					case MIDDLE:	
+						
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.RIGHT, k-1, drawingArea);
+						
+						//HautDroit
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.LEFT,Path.DOWN, k-1, drawingArea);
+						
+						//Bas droit
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.MIDDLE, k-1, drawingArea);
+						
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.LEFT,Path.TOP, k-1, drawingArea);
+						
+						
+						break;
+					case RIGHT:
 
-						//HautGauche
-						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,chem.bas,chem.droite, k, drawingArea);
+						//HautLEFT
+						drawHk(x1, y1, mhx, mhy, mx, my, mgx, mgy,Path.DOWN,Path.RIGHT, k-1, drawingArea);
 						
 						//HautDroit
-						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,chem.gauche,chem.bas, k, drawingArea);
+						drawHk(mhx, mhy, x2, y2, mdx, mdy, mx, my,Path.LEFT,Path.DOWN, k-1, drawingArea);
 						
 						//Bas droit
-						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,chem.haut,chem.droite, k, drawingArea);
+						drawHk(mx, my, mdx, mdy, x3, y3, mbx, mby,Path.TOP,Path.RIGHT, k-1, drawingArea);
 						
-						//Bas gauche
-						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,chem.gauche,chem.haut, k, drawingArea);
+						//Bas LEFT
+						drawHk(mgx, mgy, mx, my, mbx, mby, x4, y4,Path.LEFT,Path.TOP, k-1, drawingArea);
 					
 					break;
 				}

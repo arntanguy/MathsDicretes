@@ -63,7 +63,6 @@ public abstract class Hk extends Frame {
 	 * Postcondition : Hk est dessiné
 	 **/ 
 	public abstract void drawHk(int xc, int yc, int cote, Orientation o, int numCarre, int k, Graphics drawingArea);
-
 }
 
 

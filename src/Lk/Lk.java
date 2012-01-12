@@ -6,6 +6,8 @@ import java.awt.*;                    // Pour  Graphics, Frame
 import java.awt.event.WindowAdapter;  // Pour fermer
 import java.awt.event.WindowEvent;    // Pour fermer
 
+import shared.Path;
+
 /**
  * Ck
  *
@@ -51,7 +53,7 @@ public abstract class Lk extends Frame {
     
     g.setColor(Color.yellow);  // La couleur avec laquelle on va dessiner
   
-    drawHk(w/4, h/4, (3*w)/4, h/4, 3*w/4, 3*h/4, w/4,3*h/4, chem.milieu, chem.milieu,profondeur, g);
+    drawHk(w/4, h/4, (3*w)/4, h/4, 3*w/4, 3*h/4, w/4,3*h/4, Path.MIDDLE, Path.MIDDLE,profondeur, g);
    }
 
     /** drawCk 
@@ -66,7 +68,7 @@ public abstract class Lk extends Frame {
      * Preconditions : x1,x2 sont compris entre 0 et w; y1 et y2 entre 0 et h;
      * Postcondition : Ck est dessiné
      **/ 
-    public abstract void drawHk(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, chem entree, chem sortie, int k ,
+    public abstract void drawHk(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, Path entree, Path sortie, int k ,
 				 Graphics drawingArea) ;
 }
       

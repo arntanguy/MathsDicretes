@@ -2,8 +2,6 @@ package exo2;
 
 import java.awt.Graphics;
 
-import mymath.Point;
-
 public class HkSol extends Hk {
 	public HkSol(int profondeur) {
 		super(profondeur);

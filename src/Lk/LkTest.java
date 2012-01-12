@@ -14,7 +14,7 @@ public class LkTest {
      *
      */
     public static void main(String[] args) {
-	System.out.println(" dessin de C recursifs");
+	System.out.println(" dessin de L recursifs");
         System.out.println("saisir un entier, pour la  profondeur de recursion?");
         Scanner sc = new Scanner(System.in);
 	int profondeur = sc.nextInt();

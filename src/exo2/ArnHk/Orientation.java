@@ -1,4 +1,4 @@
-package exo2;
+package exo2.ArnHk;
 
 public enum Orientation {
 	//Gauche, droite, haut, bas

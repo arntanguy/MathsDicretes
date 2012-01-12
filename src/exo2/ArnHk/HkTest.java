@@ -1,4 +1,4 @@
-package exo2;
+package exo2.ArnHk;
 
 import java.util.Scanner;			     
 

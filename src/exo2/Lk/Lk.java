@@ -1,4 +1,4 @@
-package Lk;
+package exo2.Lk;
 
 
 

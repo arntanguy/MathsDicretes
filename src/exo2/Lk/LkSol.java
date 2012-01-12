@@ -1,4 +1,4 @@
-package Lk;
+package exo2.Lk;
 import java.awt.Color;
 import java.awt.Graphics;
 

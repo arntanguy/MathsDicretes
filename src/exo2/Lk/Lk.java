@@ -32,7 +32,7 @@ public abstract class Lk extends Frame {
     	this.setBackground (Color.black);
 	this.profondeur=prof;
    	addWindowListener(new WindowHandler());  // pour fermer
-   	setTitle("Exo1");
+   	setTitle("Exo2 - Labyrinthe Lk");
  }
 
 
